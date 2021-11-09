@@ -45,6 +45,17 @@ type Objet={
     readonly nomI:string;
     age:number;
     isMajeur?:boolean
+
+}
+
+type props={
+    me:{(item:number):number};
+}
+
+const real:props={
+ me:(item)=>{
+     return item
+ }
 }
 
 let Agent:Array<Objet>;
@@ -74,12 +85,19 @@ interface IF{
     (x:number,y:number):number
 }
 
-function sommes(x:number,y:number):number{
-    return x+y;
+function sommes(Vv:number,y:number):number{
+    return Vv+y;
 }
 
 const diff:IF=(x,y)=>{
     return x-y;
+}
+
+
+
+type reactType={
+   noms:string;
+
 }
 
 const log=(message:string):void=> console.log(message)
@@ -105,7 +123,7 @@ const SignFunction=(x:number,y:string):void=> console.log(`je retourne ${x} et $
 // interface pour definir une methode dans un objet literal
 
 interface IFunction{
-    SignFunction?:{(x:string,y:number):any};
+    SignFunction:(x:string,y:number)=>any;
 }
 
 const tabAssoc:IFunction={
@@ -127,6 +145,7 @@ const object:IAnyKey[]=[{
 
 //autre façon d'utiliser une interface
 const messageItem=<IContact>{};
+let m:IContact;
 
 let ArrayMessage:IContact[];
 
